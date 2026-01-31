@@ -6,10 +6,7 @@ date: 2026-01-31
 # PDF → Markdown Task (Basis)
 
 Ein Basis-Task meines Obsidian-Plugins: Er nimmt **eine PDF**, schickt sie an ein LLM und legt die **Antwort als Markdown-Datei daneben** ab.
-
 Das Ziel ist nicht “Chat”. Das Ziel ist **Transformation**: Aus einem schwer durchsuchbaren Dokument wird ein bearbeitbares, versionierbares Artefakt.
-
----
 
 ## Warum ich das gebaut habe
 
@@ -21,8 +18,6 @@ Ich will den Inhalt als Markdown **neben** der Quelle haben, damit:
 - Inhalte in Notizen/Tasks weiterfließen,
 - Änderungen nachvollziehbar bleiben (Git/History).
 
----
-
 ## Single Responsibility (wichtig)
 
 Dieser Task hat **eine** Verantwortung:
@@ -31,8 +26,6 @@ Dieser Task hat **eine** Verantwortung:
 
 Er hat **nichts** mit einem “ASK Task” zu tun (Frage stellen, Q&A, Interpretation).  
 Q&A ist ein eigener Task, mit eigener Verantwortung und eigener Fehlerklasse.
-
----
 
 ## Input / Output
 
@@ -49,8 +42,6 @@ Optional (empfohlen): Frontmatter im Output für Nachvollziehbarkeit:
 - `model`: Model-ID
 - `hash`: Hash der PDF (für “ist noch aktuell?”)
 
----
-
 ## Ablauf (high level)
 
 1. PDF wird geladen
@@ -58,15 +49,11 @@ Optional (empfohlen): Frontmatter im Output für Nachvollziehbarkeit:
 3. LLM liefert Markdown/Text zurück
 4. Plugin speichert Ergebnis als `*.md` neben der PDF
 
----
-
 ## Guardrails (damit es stabil bleibt)
 
 - **Kein Q&A, keine Interpretation:** Der Task soll nicht “schlau” sein, sondern verlässlich.
 - **Nachvollziehbarkeit > Schönheit:** Lieber rohes, aber korrektes Markdown als hübsche Fantasie.
 - **Fehler sichtbar machen:** Wenn Extraktion scheitert, wird das im Output protokolliert (statt still zu schlucken).
-
----
 
 ## Status
 
